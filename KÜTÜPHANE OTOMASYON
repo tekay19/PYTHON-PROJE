@@ -1,0 +1,114 @@
+# import json
+# from operator import index
+#
+# from matplotlib.pyplot import title
+#
+# file_name_json="Library.json"
+#
+# def load_books():
+#     try:
+#         with open(file_name_json) as json_file:
+#             data = json.load(json_file)
+#     except (FileNotFoundError, json.decoder.JSONDecodeError):
+#         return []
+#
+# def save_books(books):
+#     """Kitapları JSON dosyasına kaydeder."""
+#     with open(file_name_json, "w", encoding="utf-8") as file:
+#         json.dump(books, file, indent=4, ensure_ascii=False)
+#
+#
+# def add_the_book():
+#     title=input("Kitap Ad:")
+#     author=input("Kitap Yazarı:")
+#     year=input("Kitap Yılı:")
+#     books=load_books()
+#     books.append({"title":title,"author":author,"year":year})
+#     save_books(books)
+#     print("Kitap eklendi")
+#
+# def list_the_books():
+#     books=load_books()
+#     if not books:
+#         print("Kitap Yok")
+#         return
+#     for index ,book in enumerate(books,start=1):
+#         print(f"{index}. {book['title']}-{book['year']} {book['author']}")
+#         print()
+#
+# def search_the_book():
+#     books=load_books()
+#     keyword=input("Aramak istediğiniz kitap veya yazar adını giriniz: ")
+#     foundBooks=[book for book in books if keyword in book["title"].lower() or keyword in book["author"].lower()]
+#     if  foundBooks:
+#         for book in foundBooks:
+#             print(f"{book['title']}-{book['year']} {book['author']}")
+#     else:
+#         print("Kitap Yok")
+#
+# def delete_the_book():
+#     books=load_books()
+#     list_the_books()
+#     try:
+#         index=int(input("Silmek istediğiniz kitabın numarasını giriniz:"))-1
+#         if 0<=index<len(books):
+#             delete_books=books.pop(index)
+#             save_books(delete_books)
+#             print(f"{delete_books['title']}-{delete_books['year']} {delete_books['author']}")
+#         else:
+#             print("Geçersiz numara")
+#     except ValueError:
+#         print("Geçerli numara giriniz:")
+#
+# # Kitap bilgilerini güncelleyen fonksiyon
+# def update_book():
+#     """Kitap bilgilerini günceller."""
+#     list_the_books()  # Mevcut kitapları listele
+#     books = load_books()  # Kitapları yükle
+#     try:
+#         index = int(input("Güncellemek istediğiniz kitabın numarasını girin: ")) - 1  # Kullanıcıdan güncellenecek kitap numarasını al
+#         if 0 <= index < len(books):  # Girilen numaranın geçerli olup olmadığını kontrol et
+#             print("Yeni bilgileri girin (Boş bırakırsanız eski değer korunur):")
+#             title = input(f"Yeni Kitap Adı ({books[index]['title']}): ") or books[index]['title']  # Yeni kitap adı al
+#             author = input(f"Yeni Yazar Adı ({books[index]['author']}): ") or books[index]['author']  # Yeni yazar adı al
+#             year = input(f"Yeni Basım Yılı ({books[index]['year']}): ") or books[index]['year']  # Yeni basım yılı al
+#             books[index] = {"title": title, "author": author, "year": year}  # Kitap bilgilerini güncelle
+#             save_books(books)  # Güncellenmiş listeyi kaydet
+#             print("Kitap güncellendi!\n")
+#         else:
+#             print("Geçersiz numara.\n")
+#     except ValueError:
+#         print("Lütfen geçerli bir sayı girin.\n")
+#
+#
+# def main():
+#     """Ana menü fonksiyonu."""
+#     while True:
+#         print("\nKÜTÜPHANE OTOMASYONU")
+#         print("1. Kitap Ekle")
+#         print("2. Kitapları Listele")
+#         print("3. Kitap Ara")
+#         print("4. Kitap Sil")
+#         print("5. Kitap Güncelle")
+#         print("6. Çıkış")
+#         choice = input("Seçiminizi yapın: ")  # Kullanıcıdan seçim al
+#         if choice == "1":
+#             add_the_book()
+#         elif choice == "2":
+#             list_the_books()
+#         elif choice == "3":
+#             search_the_book()
+#         elif choice == "4":
+#             delete_the_book()
+#         elif choice == "5":
+#             update_book()
+#         elif choice == "6":
+#             print("Programdan çıkılıyor...")
+#             break  # Programı sonlandır
+#         else:
+#             print("Geçersiz seçim!\n")
+#
+# # Programı başlatan kod
+# if __name__ == "__main__":
+#     main()  # Ana menüyü çalıştır
+
