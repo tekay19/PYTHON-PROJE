@@ -1,1 +1,1 @@
-# reactUygulama1
+PYTHON PROJELER 
